@@ -13,5 +13,6 @@
 		<class>model.Precio</class>
 		<class>model.Tipo</class>
 		<class>model.Usuario</class>
+
 	</persistence-unit>
 </persistence>

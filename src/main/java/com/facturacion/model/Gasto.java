@@ -1,4 +1,4 @@
-package model;
+package com.facturacion.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -29,7 +29,7 @@ public class Gasto implements Serializable {
 	private String tipo_id__tipo;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne 
 	@JoinColumn(name="usuarios_email")
 	private Usuario usuario;
 
