@@ -32,6 +32,12 @@ public class UsuarioPK implements Serializable {
 		this.rol_idRol = rol_idRol;
 	}
 
+	
+	public UsuarioPK(String email, int rol_idRol) {
+		super();
+		this.email = email;
+		this.rol_idRol = rol_idRol;
+	}
 	public boolean equals(Object other) {
 		if (this == other) {
 			return true;

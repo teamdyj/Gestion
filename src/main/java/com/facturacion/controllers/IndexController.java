@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.facturacio.model.Rol;
 import com.facturacio.model.Usuario;
+import com.facturacio.model.UsuarioPK;
 
 @Controller
 //Implement RequestMapping, to access the controller methods we have to access this rout first
@@ -40,10 +42,13 @@ public class IndexController {
 	
 	@RequestMapping("/perfil")
 	public String perfil(Model model) {
+		
 		Usuario usuario=new Usuario();
 		usuario.setNombre("Manuel");
 		usuario.setApellido("Guzman");
-		usuario.setEmail("roolrool.net");
+		usuario.setId(new UsuarioPK("peppe@hola.es",1));
+		Rol rol=new Rol(usuario.getId().getRol_idRol(),"Usuario");
+		usuario.setRol(rol);
 		model.addAttribute("usuario", usuario);
 		model.addAttribute("titulo", "Perfil de usuario".concat(" "+usuario.getNombre()+" " +usuario.getApellido()));
 		return "perfil";
@@ -75,11 +80,12 @@ public class IndexController {
 	
 	@ModelAttribute("usuarios")
 	public List<Usuario> listarUsuarios(){
+		Rol rol=new Rol(1, "Usuario");
 		List<Usuario> usuarios= Arrays.asList(
-				new Usuario("Paco", "Lopez", "p@pp.es"),
-				new Usuario("Paco1", "Lopez1", "p1@pp.es"),
-				new Usuario("Paco2", "Lopez2", "p2@pp.es"),
-				new Usuario("Roger", "Lire", "Lire@pp.es"));
+				new Usuario(new UsuarioPK("dhdezleon@gmail.com",1),"Paco", "Lopez"),
+				new Usuario(new UsuarioPK("dhdezleon2@gmail.com",1),"Paco1", "Lopez1"),
+				new Usuario(new UsuarioPK("dhdezleon3@gmail.com",1),"Paco2", "Lopez2"),
+				new Usuario(new UsuarioPK("dhdezleon4@gmail.com",1),"Roger", "Lire"));
 		return usuarios ;
 		
 	}
