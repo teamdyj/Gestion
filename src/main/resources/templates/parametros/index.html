@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title >Enviar parametros a la URL desd enlace</title>
+<body>
+	<h1>Enviando Parametros </h1>
+	<ul>
+	<li><a th:href="@{/parametro/enviar(texto='Hola a todos')}">/parametro/enviar?texto='Hola a todos')</a></li>
+	<li><a th:href="@{/parametro/enviar(texto='Hola a Daniel como va ')}">/parametro/enviar?texto='Hola a Daniel como va )</a></li>
+	</ul>
+	</body>
+</html>
