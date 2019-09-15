@@ -47,8 +47,6 @@ public class IndexController {
 		rol.setRol("Administrador");
 		usuario.setNombre("Manuel");
 		usuario.setApellido("Guzman");
-		usuario.getId().setEmail("rool@rool.net");
-		usuario.getId().setRol_idRol(1);
 		model.addAttribute("usuario", usuario);
 		model.addAttribute("titulo", "Perfil de usuario".concat(" "+usuario.getNombre()+" " +usuario.getApellido()));
 		return "perfil";

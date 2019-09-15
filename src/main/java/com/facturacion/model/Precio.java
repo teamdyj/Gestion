@@ -3,7 +3,6 @@ package com.facturacion.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
 
 /**
@@ -24,10 +23,6 @@ public class Precio implements Serializable {
 	private BigDecimal impuestos;
 
 	private float precioFinal;
-
-	//bi-directional many-to-many association to Usuario
-	@ManyToMany(mappedBy="precios")
-	private List<Usuario> usuarios;
 
 	public Precio() {
 	}
@@ -62,14 +57,6 @@ public class Precio implements Serializable {
 
 	public void setPrecioFinal(float precioFinal) {
 		this.precioFinal = precioFinal;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return this.usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
 	}
 
 }

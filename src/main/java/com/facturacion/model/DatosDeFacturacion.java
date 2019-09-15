@@ -14,8 +14,8 @@ import javax.persistence.*;
 public class DatosDeFacturacion implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private DatosDeFacturacionPK id;
+	@Id
+	private String dni;
 
 	private String apellido;
 
@@ -29,23 +29,15 @@ public class DatosDeFacturacion implements Serializable {
 
 	private String provincia;
 
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name="usuarios_email", referencedColumnName="email"),
-		@JoinColumn(name="usuarios_Rol_idRol", referencedColumnName="Rol_idRol")
-		})
-	private Usuario usuario;
-
 	public DatosDeFacturacion() {
 	}
 
-	public DatosDeFacturacionPK getId() {
-		return this.id;
+	public String getDni() {
+		return this.dni;
 	}
 
-	public void setId(DatosDeFacturacionPK id) {
-		this.id = id;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	public String getApellido() {
@@ -94,14 +86,6 @@ public class DatosDeFacturacion implements Serializable {
 
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
-	}
-
-	public Usuario getUsuario() {
-		return this.usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 }

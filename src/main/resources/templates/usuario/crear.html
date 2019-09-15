@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<title th:text="${titulo}"></title>
+</head>
+<body>
+	<nav class="nav nav-pills nav-justified bg-dark">
+		<a class="nav-item nav-link active" href="#">TADC</a> <a
+			class="nav-item nav-link" th:href="@{/app}">App</a> <a
+			class="nav-item nav-link" th:href="@{/usuario/crear}">Crear
+			Usuario</a> <a class="nav-item nav-link" th:href="@{/usuario/listar}"
+			tabindex="-1" aria-disabled="false">Listar Usuarios</a>
+	</nav>
+
+	<div class="container">
+
+		<h1
+			class="text-primary border border-success border-top-0 border-right-0 border-left-0"
+			th:text="${titulo}"></h1>
+
+		<div th:object="${usuario}" th:remove="tag">
+			<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+				<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+			</ul>
+		</div>
+		<form th:action="@{/usuario/crear}" th:object="${usuario}"
+			method="post">
+			<table style="width: 450px" align="center" class="table">
+
+				<tr>
+					<th style="width: 150px"><label for="email">Email</label></th>
+					<td><input type="email" th:field="*{email}" name="email"
+						class="form-control" th:errorclass="'form-control alert-danger'" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small></td>
+				</tr>
+				<tr>
+					<th><label for="nombre">Nombre</label></th>
+					<td><input type="text" th:field="*{nombre}" name="nombre"
+						class="form-control" th:errorclass="'form-control alert-danger'" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small></td>
+
+				</tr>
+				<tr>
+					<th><label for="apellido">Apellido</label></th>
+					<td><input type="text" th:field="*{apellido}" name="apellido"
+						class="form-control" th:errorclass="'form-control alert-danger'" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small></td>
+
+				</tr>
+
+
+				<td><input type="submit" value="Crear Cliente"
+					class="btn btn-primary" /></td>
+				<td><input type="reset" value="Limpiar formulario"
+					class="btn btn-primary" /></td>
+				</tr>
+
+
+			</table>
+		</form>
+
+	</div>
+
+	<!-- jQuery library -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

@@ -15,8 +15,8 @@ import java.util.Date;
 public class Clas implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private ClasPK id;
+	@Id
+	private int idClases;
 
 	private String descripcion;
 
@@ -25,23 +25,15 @@ public class Clas implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name="usuarios_email", referencedColumnName="email"),
-		@JoinColumn(name="usuarios_Rol_idRol", referencedColumnName="Rol_idRol")
-		})
-	private Usuario usuario;
-
 	public Clas() {
 	}
 
-	public ClasPK getId() {
-		return this.id;
+	public int getIdClases() {
+		return this.idClases;
 	}
 
-	public void setId(ClasPK id) {
-		this.id = id;
+	public void setIdClases(int idClases) {
+		this.idClases = idClases;
 	}
 
 	public String getDescripcion() {
@@ -66,14 +58,6 @@ public class Clas implements Serializable {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
-	}
-
-	public Usuario getUsuario() {
-		return this.usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 }

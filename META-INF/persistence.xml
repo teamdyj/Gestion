@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="MyAcademy">
-		<class>com.facturacio.model.Asignatura</class>
-		<class>com.facturacio.model.Clas</class>
-		<class>com.facturacio.model.ClasPK</class>
-		<class>com.facturacio.model.Curso</class>
-		<class>com.facturacio.model.CursosHasAsignatura</class>
-		<class>com.facturacio.model.CursosHasAsignaturaPK</class>
-		<class>com.facturacio.model.DatosDeFacturacion</class>
-		<class>com.facturacio.model.DatosDeFacturacionPK</class>
-		<class>com.facturacio.model.Factura</class>
-		<class>com.facturacio.model.FacturaPK</class>
-		<class>com.facturacio.model.Gasto</class>
-		<class>com.facturacio.model.GastoPK</class>
-		<class>com.facturacio.model.Precio</class>
-		<class>com.facturacio.model.Rol</class>
-		<class>com.facturacio.model.Usuario</class>
-		<class>com.facturacio.model.UsuarioPK</class>
-		<class>com.facturacio.model.UsuariosHasCurso</class>
-		<class>com.facturacio.model.UsuariosHasCursoPK</class>
-		<class>com.facturacio.model.UsuariosHasPrecio</class>
-		<class>com.facturacio.model.UsuariosHasPrecioPK</class>
+	<persistence-unit name="MyAcademy" transaction-type="RESOURCE_LOCAL">
+		<class>com.facturacion.model.Asignatura</class>
+		<class>com.facturacion.model.Clas</class>
+		<class>com.facturacion.model.Curso</class>
+		<class>com.facturacion.model.DatosDeFacturacion</class>
+		<class>com.facturacion.model.Factura</class>
+		<class>com.facturacion.model.Gasto</class>
+		<class>com.facturacion.model.Precio</class>
+		<class>com.facturacion.model.Rol</class>
+		<class>com.facturacion.model.Usuario</class>
+		<properties>
+			<property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
+		</properties>
 	</persistence-unit>
 </persistence>

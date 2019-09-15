@@ -2,7 +2,6 @@ package com.facturacion.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -21,10 +20,6 @@ public class Asignatura implements Serializable {
 	private String descripcion;
 
 	private String nombre;
-
-	//bi-directional many-to-one association to CursosHasAsignatura
-	@OneToMany(mappedBy="asignatura")
-	private List<CursosHasAsignatura> cursosHasAsignaturas;
 
 	public Asignatura() {
 	}
@@ -51,28 +46,6 @@ public class Asignatura implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public List<CursosHasAsignatura> getCursosHasAsignaturas() {
-		return this.cursosHasAsignaturas;
-	}
-
-	public void setCursosHasAsignaturas(List<CursosHasAsignatura> cursosHasAsignaturas) {
-		this.cursosHasAsignaturas = cursosHasAsignaturas;
-	}
-
-	public CursosHasAsignatura addCursosHasAsignatura(CursosHasAsignatura cursosHasAsignatura) {
-		getCursosHasAsignaturas().add(cursosHasAsignatura);
-		cursosHasAsignatura.setAsignatura(this);
-
-		return cursosHasAsignatura;
-	}
-
-	public CursosHasAsignatura removeCursosHasAsignatura(CursosHasAsignatura cursosHasAsignatura) {
-		getCursosHasAsignaturas().remove(cursosHasAsignatura);
-		cursosHasAsignatura.setAsignatura(null);
-
-		return cursosHasAsignatura;
 	}
 
 }

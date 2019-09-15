@@ -13,28 +13,20 @@ import javax.persistence.*;
 public class Factura implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private FacturaPK id;
+	@Id
+	private int nºfactura;
 
 	private int id_clase;
-
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name="usuarios_email", referencedColumnName="email"),
-		@JoinColumn(name="usuarios_Rol_idRol", referencedColumnName="Rol_idRol")
-		})
-	private Usuario usuario;
 
 	public Factura() {
 	}
 
-	public FacturaPK getId() {
-		return this.id;
+	public int getNºfactura() {
+		return this.nºfactura;
 	}
 
-	public void setId(FacturaPK id) {
-		this.id = id;
+	public void setNºfactura(int nºfactura) {
+		this.nºfactura = nºfactura;
 	}
 
 	public int getId_clase() {
@@ -43,14 +35,6 @@ public class Factura implements Serializable {
 
 	public void setId_clase(int id_clase) {
 		this.id_clase = id_clase;
-	}
-
-	public Usuario getUsuario() {
-		return this.usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 }
