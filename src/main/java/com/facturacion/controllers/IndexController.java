@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.facturacio.model.Usuario;
+import com.facturacion.model.Rol;
+import com.facturacion.model.Usuario;
 
 @Controller
 //Implement RequestMapping, to access the controller methods we have to access this rout first
@@ -41,9 +42,11 @@ public class IndexController {
 	@RequestMapping("/perfil")
 	public String perfil(Model model) {
 		Usuario usuario=new Usuario();
+		Rol rol=new Rol();
+		rol.setIdRol(1);
+		rol.setRol("Administrador");
 		usuario.setNombre("Manuel");
 		usuario.setApellido("Guzman");
-		usuario.setEmail("roolrool.net");
 		model.addAttribute("usuario", usuario);
 		model.addAttribute("titulo", "Perfil de usuario".concat(" "+usuario.getNombre()+" " +usuario.getApellido()));
 		return "perfil";
@@ -63,25 +66,24 @@ public class IndexController {
 //				new Usuario("Paco1", "Lopez1", "p1@pp.es"),
 //				new Usuario("Paco2", "Lopez2", "p2@pp.es"),
 //				new Usuario("Roger", "Lire", "Lire@pp.es"));
-//		
+		
 		
 		model.addAttribute("titulo", "Listando a usuarios");
 	//	model.addAttribute("usuarios",usuarios);
 		return "listar";
 		
-	}
+	}}
 	
 //  another way to pass the parameter into view,In this case we can access the "usuarios" attribute  from all views defined in the ControllerIndex
 	
-	@ModelAttribute("usuarios")
-	public List<Usuario> listarUsuarios(){
-		List<Usuario> usuarios= Arrays.asList(
-				new Usuario("Paco", "Lopez", "p@pp.es"),
-				new Usuario("Paco1", "Lopez1", "p1@pp.es"),
-				new Usuario("Paco2", "Lopez2", "p2@pp.es"),
-				new Usuario("Roger", "Lire", "Lire@pp.es"));
-		return usuarios ;
-		
-	}
+//	@ModelAttribute("usuarios")
+//	public List<Usuario> listarUsuarios(){
+//		List<Usuario> usuarios= Arrays.asList(
+//				new Usuario("Paco", "Lopez", "p@pp.es"),
+//				new Usuario("Paco1", "Lopez1", "p1@pp.es"),
+//				new Usuario("Paco2", "Lopez2", "p2@pp.es"),
+//				new Usuario("Roger", "Lire", "Lire@pp.es"));
+//		return usuarios ;
+//		
+//	}
 
-}

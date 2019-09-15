@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<title th:text="${titulo}"></title>
+</head>
+<body>
+	<nav class="nav nav-pills nav-justified bg-dark">
+		<a class="nav-item nav-link active" href="#">TADC</a>
+		<a class="nav-item nav-link" th:href="@{/app}">App</a> 
+		<a class="nav-item nav-link" th:href="@{/usuario/crear}">Crear Usuario</a>
+		<a class="nav-item nav-link" th:href="@{/usuario/listar}" tabindex="-1" aria-disabled="false">Listar Usuarios</a>
+	</nav>
+
+	<div class="container">
+
+		<h1
+			class="text-primary border border-success border-top-0 border-right-0 border-left-0"
+			th:text="${titulo}"></h1>
+		<div th:if="${usuarios.size()==0}">No hay usuarios registrados
+			en el sistema</div>
+		<!-- 	<div th:if="${usuarios.size()>0}"> -->
+		<div th:if="${not usuarios.isEmpty()}">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Fecha</th>
+						<th>Email</th>
+						<th>Editar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="usuario:${usuarios}">
+						<td th:text="${usuario.nombre}"></td>
+						<td th:text="${usuario.apellido}"></td>
+						<td th:text="${usuario.fecharegistro}"></td>
+						<td th:text="${usuario.email}"></td>
+						<td><a class="btn btn-primary btn-xs" th:href="@{/usuario/crear/}+ ${usuario.email}">Editar</a></td>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+
+	<!-- jQuery library -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>
